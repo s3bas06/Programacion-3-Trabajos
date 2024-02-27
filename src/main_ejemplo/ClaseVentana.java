@@ -31,8 +31,10 @@ public class ClaseVentana extends JFrame {
 
 		setLocationRelativeTo(null);
 
-		this.setSize(1000,1000);
-
+		//this.setSize(1000,1000); este es para lo que no son calculadoras
+		
+		this.setSize(305,430);
+		
 		this.setVisible(true);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +64,8 @@ public class ClaseVentana extends JFrame {
 		JPanel panel = new JPanel();
 		//login(panel);
 		//register(panel);
-		this.admin();
+		//this.admin();
+		this.calculadora();
 		
 		this.repaint();
 		this.revalidate();
@@ -324,6 +327,95 @@ public class ClaseVentana extends JFrame {
 		
 		
 		this.add(panel_admin);
+	}
+	
+	public void calculadora() {
+		
+		JPanel calculadora = new JPanel();
+		calculadora.setBounds(0,0,290,400);
+		calculadora.setBackground(Color.BLACK);
+		calculadora.setLayout(null);
+		
+		JTextField pantalla = new JTextField();
+		pantalla.setBounds(0,0,285,25);
+		calculadora.add(pantalla);
+	
+		JButton numero7 = new JButton("7");
+		numero7.setBounds(0,105,60,60);
+		calculadora.add(numero7);
+		
+		
+		JButton numero8 = new JButton("8");
+		numero8.setBounds(75,105,60,60);
+		calculadora.add(numero8);
+
+		JButton numero9 = new JButton("9");
+		numero9.setBounds(150,105,60,60);
+		calculadora.add(numero9);
+		
+		JButton numero4 = new JButton("4");
+		numero4.setBounds(0,180,60,60);
+		calculadora.add(numero4);
+		
+		JButton numero5 = new JButton("5");
+		numero5.setBounds(75,180,60,60);
+		calculadora.add(numero5);
+		
+		JButton numero6 = new JButton("6");
+		numero6.setBounds(150,180,60,60);
+		calculadora.add(numero6);
+		
+		JButton numero1 = new JButton("1");
+		numero1.setBounds(0,255,60,60);
+		calculadora.add(numero1);
+		
+		JButton numero2 = new JButton("2");
+		numero2.setBounds(75,255,60,60);
+		calculadora.add(numero2);
+		
+		JButton numero3 = new JButton("3");
+		numero3.setBounds(150,255,60,60);
+		calculadora.add(numero3);
+		
+		JButton numero0 = new JButton("0");
+		numero0.setBounds(0,330,60,60);
+		calculadora.add(numero0);
+		
+		JButton punto = new JButton(".");
+		punto.setBounds(75,330,60,60);
+		calculadora.add(punto);
+		
+		JButton igual  = new JButton("=");
+		igual.setBounds(150,330,60,60);
+		calculadora.add(igual);
+		
+		JButton division = new JButton("/");
+		division.setBounds(225,105,60,60);
+		calculadora.add(division);
+		
+		JButton multiplicacion = new JButton("*");
+		multiplicacion.setBounds(225,180,60,60);
+		calculadora.add(multiplicacion);
+		
+		JButton resta = new JButton("-");
+		resta.setBounds(225,255,60,60);
+		calculadora.add(resta);
+		
+		JButton suma = new JButton("+");
+		suma.setBounds(225,330,60,60);
+		calculadora.add(suma);
+		
+		JButton CE = new JButton("CE");
+		CE.setBounds(0,30,60,60);
+		calculadora.add(CE);
+		
+		JButton rel = new JButton("");
+		rel.setBounds(75,30,210,60);
+		calculadora.add(rel);
+		
+		
+		
+		this.add(calculadora);
 	}
 	
 }
