@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -31,9 +32,11 @@ public class ClaseVentana extends JFrame {
 
 		setLocationRelativeTo(null);
 
-		//this.setSize(1000,1000); este es para lo que no son calculadoras
+		//this.setSize(1000,1000); //este es para lo que no son calculadoras
 		
-		this.setSize(305,430);
+		//this.setSize(305,430); //este es para la calculadora.
+		
+		this.setSize(1280,780);; //este es para el segundo login.
 		
 		this.setVisible(true);
 
@@ -62,10 +65,12 @@ public class ClaseVentana extends JFrame {
 	
 	public void IniciarComponentes() {
 		JPanel panel = new JPanel();
-		//login(panel);
-		//register(panel);
+		//this.login(panel);
+		//this.register(panel);
 		//this.admin();
-		this.calculadora();
+		//this.calculadora();
+		
+		this.login2();
 		
 		this.repaint();
 		this.revalidate();
@@ -159,7 +164,7 @@ public class ClaseVentana extends JFrame {
 		grupo.add(rdbtn2);
 		
 		String colonias[] = {"Centro","Camino Real","Santa Fe","Concha", "Villas del encanto"};
-		JComboBox location = new JComboBox(colonias);
+		JComboBox<?> location = new JComboBox<Object>(colonias); //AQUI CAMBIE ALGO POR EL COMPILADOR 
 		location.setFont(new Font("ARIAL", Font.BOLD, 18));
 		location.setBounds(600,450,320,25);
 		register.add(location);
@@ -235,6 +240,11 @@ public class ClaseVentana extends JFrame {
 		acceder.setText("Acceder");
 		acceder.setFont(new Font("ARIAL",Font.BOLD,25));
 		login.add(acceder);
+		
+		JLabel logo = new JLabel();
+		logo.setIcon(new ImageIcon(getClass().getResource("felicitaciones.png")));
+		logo.setBounds(100,500,256,256);
+		login.add(logo);
 		
 		this.add(login);
 	}
@@ -416,6 +426,90 @@ public class ClaseVentana extends JFrame {
 		
 		
 		this.add(calculadora);
+	}
+
+	public void login2() {
+		
+		
+		JPanel login2 = new JPanel();
+		login2.setBounds(0,0,1280,720);
+		login2.setBackground(new Color(0,127,178));
+		login2.setLayout(null);
+		
+		JPanel loginCenter = new JPanel();
+		loginCenter.setBounds(213,120,854,480);
+		loginCenter.setBackground(new Color(12,101,137));
+		loginCenter.setLayout(null);
+		login2.add(loginCenter);
+		
+		JLabel title = new JLabel("User Login");
+		title.setBounds(545,20,300,45);
+		title.setFont(new Font("Stencil Regular", Font.BOLD + Font.ITALIC, 35));
+		title.setForeground(Color.WHITE);
+		login2.add(title);
+		
+		JLabel titleCenter = new JLabel("My Account");
+		titleCenter.setBounds(295,20,300,60);
+		titleCenter.setFont(new Font("Stencil Regular", Font.BOLD + Font.ITALIC, 45));
+		titleCenter.setForeground(new Color(236,219,45));
+		loginCenter.add(titleCenter);
+		
+		JLabel UsernameEnter = new JLabel("Enter Your Username");
+		UsernameEnter.setBounds(150,150,300,25);
+		UsernameEnter.setFont(new Font("Stencil Regular", Font.BOLD,18));
+		UsernameEnter.setForeground(Color.white);
+		loginCenter.add(UsernameEnter);
+		
+		JLabel iconoUser = new JLabel();
+		iconoUser.setIcon(new ImageIcon(getClass().getResource("usuario.png")));
+		iconoUser.setBounds(95,190,32,32);
+		loginCenter.add(iconoUser);
+		
+		JTextField user = new JTextField();
+		user.setBounds(140,180,530,50);
+		user.setFont(new Font("Stencil Regular",Font.BOLD,20));
+		loginCenter.add(user);
+		
+		JLabel passwordEnter = new JLabel("Enter Your Password");
+		passwordEnter.setBounds(150,260,300,25);
+		passwordEnter.setFont(new Font("Stencil Regular", Font.BOLD,18));
+		passwordEnter.setForeground(Color.white);
+		loginCenter.add(passwordEnter);
+		
+		JLabel iconoPassword = new JLabel();
+		iconoPassword.setIcon(new ImageIcon(getClass().getResource("cerrar.png")));
+		iconoPassword.setBounds(95,310,32,32);
+		loginCenter.add(iconoPassword);
+		
+		JPasswordField password = new JPasswordField();
+		password.setBounds(140,300,530,50);
+		password.setFont(new Font("Stencil Regular",Font.BOLD,20));
+		loginCenter.add(password);
+		
+		JButton loginButton = new JButton("Login");
+		loginButton.setBounds(270,390,300,60);
+		loginButton.setFont(new Font("Stencil Regular", Font.BOLD, 45));
+		loginButton.setBackground(new Color(236,219,45));
+		loginCenter.add(loginButton);
+		
+		JLabel account = new JLabel("Don't have an account?");
+		account.setBounds(520,610,300,20);
+		account.setFont(new Font("Stencil Regular", Font.BOLD,20));
+		login2.add(account);
+		
+		JButton registerButton = new JButton("Sign up");
+		registerButton.setBounds(530,650,200,60);
+		registerButton.setFont(new Font("Stencil Regular", Font.BOLD, 30));
+		registerButton.setBackground(new Color(236,219,45));
+		login2.add(registerButton);
+		
+		
+		
+		
+		
+		
+		this.add(login2);
+		
 	}
 	
 }
