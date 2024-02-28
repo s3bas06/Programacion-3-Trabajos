@@ -1,10 +1,14 @@
 package main_ejemplo;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -68,9 +72,10 @@ public class ClaseVentana extends JFrame {
 		//this.login(panel);
 		//this.register(panel);
 		//this.admin();
-		//this.calculadora();
+		//this.calculadora();	
+		//this.login2();
 		
-		this.login2();
+		this.gridCalculadora();
 		
 		this.repaint();
 		this.revalidate();
@@ -503,13 +508,66 @@ public class ClaseVentana extends JFrame {
 		registerButton.setBackground(new Color(236,219,45));
 		login2.add(registerButton);
 		
-		
-		
-		
-		
-		
 		this.add(login2);
 		
+	}
+	
+	public void gridCalculadora() {
+		this.setSize(480,650);
+		
+		JPanel gridCalculadora = new JPanel();
+		gridCalculadora.setBounds(0,0,this.getWidth(),this.getHeight());
+		gridCalculadora.setBackground(new Color(246,251,195));
+		gridCalculadora.setLayout(new BorderLayout());
+		
+		JLabel text = new JLabel("100.00",4);
+		text.setOpaque(true);
+		text.setBackground(Color.white);
+		text.setFont(new Font("Stencil Regular", Font.BOLD + Font.ITALIC, 35));
+		
+		gridCalculadora.add(text, BorderLayout.NORTH);
+		
+		JPanel numerosCalc = new JPanel();
+		numerosCalc.setBackground(Color.yellow);
+		numerosCalc.setLayout(new GridLayout(4,3,10,10)); //EL 10 y 10 son el hGap y el vGap.
+		gridCalculadora.add(numerosCalc, BorderLayout.CENTER);
+		
+		//Un for para agregar los botones de manera automatica.
+		
+		String btns[] = {"7","8","9","4","5","6","1","2","3","0",".","/"};
+		for(int i=0; i<12; i++) {
+			JButton botones = new JButton(btns[i]);
+			numerosCalc.add(botones);
+		}
+		
+		//Sector derecho, con FlowLayout
+		
+		JPanel eastButtons = new JPanel();
+		eastButtons.setBackground(new Color(114,197,87));
+		eastButtons.setLayout(new GridLayout(3,1,10,10));
+		gridCalculadora.add(eastButtons, BorderLayout.EAST);
+		
+		String eastBtns[] = {"+","-","="};
+		
+		for(int i=0; i<3; i++) {
+			JButton eastButton = new JButton(eastBtns[i]);
+			eastButtons.add(eastButton);
+		}
+		
+		JPanel westButtons = new JPanel();
+		westButtons.setBackground(Color.DARK_GRAY);
+		westButtons.setLayout(new BoxLayout(westButtons,BoxLayout.Y_AXIS));
+		gridCalculadora.add(westButtons, BorderLayout.WEST); // LINE_START ES EQUIVALENTE A WEST
+
+		String westBtns[] = {"MC","M+","*"};
+		
+		for(int i=0; i<3; i++) {
+			JButton westButton = new JButton(westBtns[i]);
+			westButtons.add(westButton);
+		}
+		
+		
+		this.add(gridCalculadora);
 	}
 	
 }
