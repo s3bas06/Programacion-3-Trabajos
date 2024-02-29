@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class ClaseVentana extends JFrame {
 
@@ -74,8 +75,9 @@ public class ClaseVentana extends JFrame {
 		//this.admin();
 		//this.calculadora();	
 		//this.login2();
+		//this.gridCalculadora();
 		
-		this.gridCalculadora();
+		this.CalcularInteres();
 		
 		this.repaint();
 		this.revalidate();
@@ -569,5 +571,113 @@ public class ClaseVentana extends JFrame {
 		
 		this.add(gridCalculadora);
 	}
-	
+
+	public void CalcularInteres() {
+		this.setSize(480,500);
+		
+		JPanel main =  new JPanel();
+		main.setBounds(0,0,this.getWidth(),this.getHeight());
+		main.setBackground(new Color(253,247,202));
+		main.setLayout(new BorderLayout());
+		
+		JLabel title = new JLabel("Interés");
+		title.setBackground(Color.white);
+		title.setFont(new Font("Stencil Regular", Font.BOLD + Font.ITALIC, 15));
+		
+		main.add(title, BorderLayout.NORTH);
+		
+		JPanel calc = new JPanel();
+		calc.setBackground(new Color(174,248,161));
+		calc.setLayout(new BorderLayout());
+		
+		main.add(calc, BorderLayout.CENTER);
+		
+		JPanel calcCenter = new JPanel();
+		calcCenter.setBackground(new Color(174,248,161));
+		calcCenter.setLayout(null);
+		calcCenter.setOpaque(true);
+		calc.add(calcCenter, BorderLayout.CENTER);
+		
+		JLabel intTitle = new JLabel("Calcular Interés: ");
+		intTitle.setBounds(0,10,50,18);
+		intTitle.setFont(new Font("Arial", Font.BOLD, 15));
+		calc.add(intTitle, BorderLayout.NORTH);
+		
+		JLabel capText = new JLabel("Capital:");
+		capText.setBounds(80,15,250,30);
+		capText.setFont(new Font("Arial", Font.BOLD, 15));
+		calcCenter.add(capText);
+		
+		JTextField capTF = new JTextField();
+		capTF.setBounds(205,15,200,30);
+		calcCenter.add(capTF);
+		
+		JLabel timeText = new JLabel("Tiempo:");
+		timeText.setBounds(80,70,250,30);
+		timeText.setFont(new Font("Arial", Font.BOLD, 15));
+		calcCenter.add(timeText);
+		
+		JTextField timeTF = new JTextField();
+		timeTF.setBounds(205,70,200,30);
+		calcCenter.add(timeTF);
+		
+		JLabel tasaText = new JLabel("Tasa:");
+		tasaText.setBounds(80,125,250,30);
+		tasaText.setFont(new Font("Arial", Font.BOLD, 15));
+		calcCenter.add(tasaText);
+		
+		JTextField tasaTF = new JTextField();
+		tasaTF.setBounds(205,125,200,30);
+		calcCenter.add(tasaTF);
+		
+		JButton calcular = new JButton("Calcular");
+		calcular.setBounds(110,180,100,25);
+		calcCenter.add(calcular);
+		
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.setBounds(260,180,100,25);
+		calcCenter.add(cancelar);
+		
+		
+		JPanel resultado = new JPanel();
+		resultado.setSize(this.getWidth(), 100);
+		resultado.setBackground(new Color(255,105,105));
+		resultado.setLayout(new BorderLayout());
+		resultado.setPreferredSize(new Dimension(this.getWidth(),130));
+		main.add(resultado, BorderLayout.SOUTH);
+		
+		JLabel espacio = new JLabel("       ");
+		espacio.setBounds(260,180,100,25);
+		resultado.add(espacio, BorderLayout.NORTH);
+		
+		JPanel resCenter = new JPanel();
+		resCenter.setLayout(new FlowLayout());
+		resCenter.setBackground(new Color(255,105,105));
+		resCenter.setBorder(new EmptyBorder(0,60,0,60));
+		resultado.add(resCenter, BorderLayout.CENTER);
+		
+		JLabel interesFinal = new JLabel("Interés:         ");
+		interesFinal.setFont(new Font("Arial", Font.BOLD, 15));
+		resCenter.add(interesFinal);
+		
+		JTextField intFinalT = new JTextField();
+		intFinalT.setPreferredSize(new Dimension(180,30));
+		resCenter.add(intFinalT);
+		
+		
+		JLabel monto = new JLabel("Monto:          ");
+		monto.setFont(new Font("Arial", Font.BOLD, 15));
+		resCenter.add(monto);
+		
+		JTextField montoTF = new JTextField();
+		montoTF.setPreferredSize(new Dimension(180,30));
+		resCenter.add(montoTF);
+		
+		
+		
+		
+		
+		
+		this.add(main);
+	}
 }
