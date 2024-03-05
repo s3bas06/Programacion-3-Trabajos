@@ -1,12 +1,19 @@
 package main_ejemplo;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -41,7 +48,7 @@ public class ClaseVentana extends JFrame {
 		
 		//this.setSize(305,430); //este es para la calculadora.
 		
-		this.setSize(1280,780);; //este es para el segundo login.
+		this.setSize(1280,720);; //este es para el segundo login.
 		
 		this.setVisible(true);
 
@@ -76,8 +83,9 @@ public class ClaseVentana extends JFrame {
 		//this.calculadora();	
 		//this.login2();
 		//this.gridCalculadora();
+		//this.CalcularInteres();
 		
-		this.CalcularInteres();
+		this.paint(getGraphics());
 		
 		this.repaint();
 		this.revalidate();
@@ -680,4 +688,47 @@ public class ClaseVentana extends JFrame {
 		
 		this.add(main);
 	}
+
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		//Linea
+		Graphics2D g2d = (Graphics2D)g;
+		
+		g2d.setColor(Color.blue); //Este setColor, la variable g representa el contexto donde podemos pintar. g2d, utiliza graficos en 2d como herramientas para pintar.
+		//g2d.drawLine(30, 40,70, 100);
+		g2d.fillRect(50,50,200,100); //Colocar un rectangulo lleno.
+		g2d.clearRect(100,100,100,100); //Borra una zona rectangular
+		g2d.drawArc(300,300,100,100,45,180);
+		g2d.fillArc(400, 400, 100, 100, 45, 180);
+		g2d.setColor(Color.black);
+		g2d.drawLine(500,500,240,200);
+		g2d.drawOval(600,80,80,100);
+		g2d.fillOval(800,80,80,100);
+		
+		int xPoints[] = {100,250,300};
+		int yPoints[] = {100,200,300};
+		 
+		g2d.setColor(Color.red);
+		
+		g2d.fillPolygon(xPoints, yPoints, 3);
+		g2d.setFont(new Font("ARIAL", Font.BOLD, 30)); //Para poner una fuente y el tamano
+		g2d.drawString("HOLA", 500, 600);
+		
+		g2d.setStroke(new BasicStroke(8));
+		g2d.drawRoundRect(800,300,200,200,10,10);
+		
+		try {
+			BufferedImage image = ImageIO.read(new File("src/main_ejemplo/usuario.png"));
+			g2d.drawImage(image, 10,60,null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+
 }
