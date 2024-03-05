@@ -48,9 +48,7 @@ public class ClaseVentana extends JFrame {
 		
 		//this.setSize(305,430); //este es para la calculadora.
 		
-		//this.setSize(1280,720); //este es para el segundo login.
-		
-		this.setSize(1000,800);
+		this.setSize(1280,720);; //este es para el segundo login.
 		
 		this.setVisible(true);
 
@@ -693,83 +691,44 @@ public class ClaseVentana extends JFrame {
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		//Trabajo de hacer la casa.
 		
+		//Linea
 		Graphics2D g2d = (Graphics2D)g;
 		
-		//Base de la casa.
-		g2d.setColor(new Color(87,104,225)); //Fondo
-		g2d.fillRect(0,0,this.getWidth(), this.getHeight());
+		g2d.setColor(Color.blue); //Este setColor, la variable g representa el contexto donde podemos pintar. g2d, utiliza graficos en 2d como herramientas para pintar.
+		//g2d.drawLine(30, 40,70, 100);
+		g2d.fillRect(50,50,200,100); //Colocar un rectangulo lleno.
+		g2d.clearRect(100,100,100,100); //Borra una zona rectangular
+		g2d.drawArc(300,300,100,100,45,180);
+		g2d.fillArc(400, 400, 100, 100, 45, 180);
+		g2d.setColor(Color.black);
+		g2d.drawLine(500,500,240,200);
+		g2d.drawOval(600,80,80,100);
+		g2d.fillOval(800,80,80,100);
 		
-		g2d.setColor(new Color(80,47,35)); //Tierra
-		g2d.fillRect(0, 710, this.getWidth(), 90);
+		int xPoints[] = {100,250,300};
+		int yPoints[] = {100,200,300};
+		 
+		g2d.setColor(Color.red);
 		
-		g2d.setColor(new Color(108,201,3));//Pasto
-		g2d.fillRect(0, 660, this.getWidth(), 50);
+		g2d.fillPolygon(xPoints, yPoints, 3);
+		g2d.setFont(new Font("ARIAL", Font.BOLD, 30)); //Para poner una fuente y el tamano
+		g2d.drawString("HOLA", 500, 600);
 		
-		g2d.setColor(new Color(24,182,177));//Casa color oscuro
-		g2d.fillRect(175, 210, 650, 450);
+		g2d.setStroke(new BasicStroke(8));
+		g2d.drawRoundRect(800,300,200,200,10,10);
 		
-		g2d.setColor(new Color(30,207,202));//Casa color claro
-		g2d.fillRect(200, 210, 600, 450);
-		
-		g2d.setColor(Color.WHITE); //Ventana fondo
-		g2d.fillRect(270,300,200,200);
-		
-		g2d.setColor(new Color(168,241,239)); //Ventanas clarito
-		g2d.fillRect(300, 330, 60, 140); //Ventana izquierda
-		g2d.fillRect(380, 330, 60, 140); //Ventana derecha
-		
-		g2d.setColor(new Color(76,181,157)); //Ventana marco color.
-		g2d.fillRect(240,500,260,20);
-		
-		g2d.setColor(new Color(202,154,36)); //Tanque de gas color
-		g2d.fillRect(825, 470, 80, 190);
-		
-		g2d.setColor(new Color(201,63,3)); //Tanque de gas top
-		g2d.fillRect(825,470,80,20);
-		g2d.fillRect(843,460,40,10);
-		g2d.setColor(Color.LIGHT_GRAY); //Parte gris
-		g2d.fillRect(825,450, 30, 10);
-		
-		g2d.setColor(new Color(0,75,77)); //Techo color
-		g2d.fillRect(145, 210, 710, 50);
-		
-		g2d.setColor(Color.WHITE); //Palos del techo
-		g2d.fillRect(270,140,10,70);
-		g2d.fillRect(320,170,10,40);
-		
-		g2d.setColor(Color.black);//Tinaco
-		g2d.fillRect(680, 80, 100, 130);
-		g2d.fillRect(710, 60, 40, 20);
-		g2d.setColor(Color.WHITE);
-		g2d.fillRect(705, 120, 60, 25);
-		
-		//Palos horizontales de la cerca
-		g2d.setColor(new Color(190, 145, 0));
-		int y=0;
-		for(int i=0; i<4;i++) {
-			g2d.fillRect(0,540 + y,this.getWidth(),15);
-			y+=30;
+		try {
+			BufferedImage image = ImageIO.read(new File("src/main_ejemplo/usuario.png"));
+			g2d.drawImage(image, 10,60,null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		//Palos verticales de la cerca.
-		g2d.setColor(new Color(255, 195, 0));
-		int x=0;
-		for(int i=0; i<=18; i++) {
-			g2d.fillRect(40 + x, 520, 10, 140);
-			x+=50;
-		}
 		
-		//Puerta de la casa.
-		g2d.setColor(Color.GRAY); //fondo
-		g2d.fillRect(565, 340, 160, 320);
 		
-		g2d.setColor(Color.WHITE); //blanco
-		g2d.fillRect(580, 355, 130, 290);
 		
-		g2d.setColor(Color.YELLOW);
-		g2d.fillRect(685, 480, 15, 25);
 	}
 
 }
