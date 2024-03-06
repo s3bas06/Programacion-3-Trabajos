@@ -9,6 +9,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Stroke;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +38,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class ClaseVentana extends JFrame {
+public class ClaseVentana extends JFrame implements MouseListener{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -50,7 +53,7 @@ public class ClaseVentana extends JFrame {
 		
 		//this.setSize(1280,720); //este es para el segundo login.
 		
-		this.setSize(1000,800);
+		this.setSize(1300,800);
 		
 		this.setVisible(true);
 
@@ -67,9 +70,11 @@ public class ClaseVentana extends JFrame {
 		this.setMaximumSize(new Dimension(1000,1000));
 
 		this.setLocationRelativeTo(null);
-
+		
+		this.addMouseListener(this);
+		
 		IniciarComponentes();
-
+		
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -346,11 +351,6 @@ public class ClaseVentana extends JFrame {
 		JScrollPane scroll = new JScrollPane(table_user);
 		scroll.setBounds(40,225,900,100);
 		panel_admin.add(scroll);
-		
-		
-		
-		
-		
 		
 		
 		this.add(panel_admin);
@@ -691,6 +691,9 @@ public class ClaseVentana extends JFrame {
 		this.add(main);
 	}
 
+	//Paint para la casita.
+	//////////////////////////////////////////////////////////////////////////////
+	/*
 	public void paint(Graphics g) {
 		super.paint(g);
 		//Trabajo de hacer la casa.
@@ -771,5 +774,149 @@ public class ClaseVentana extends JFrame {
 		g2d.setColor(Color.YELLOW);
 		g2d.fillRect(685, 480, 15, 25);
 	}
+	 */
+	
+	//Paint para la imagen de Mario Bros.
+	//////////////////////////////////////////////////////////////
+	public void paint(Graphics g) {
+		super.paint(g);
+		//Trabajo de hacer la imagen de Mario Bros.
+		
+		Graphics2D g2d = (Graphics2D)g;
+		
+		//Fondo.
+		g2d.setColor(Color.decode("#94FCFF"));
+		g2d.fillRect(0,0,this.getWidth(),this.getHeight());
+		
+		//Cuadro de fondo azul
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(8));
+		g2d.fillRoundRect(370, 320, 250,350,15,15);
+		
+		//Piso
+		g2d.setColor(new Color(238,121,62));
+		g2d.fillRect(0, 630, this.getWidth(), 100);
+		g2d.setColor(Color.decode("#B14E26"));
+		g2d.fillRect(0, 680, this.getWidth(), 200);
+		//Recuadros del suelo.
+		int x=0;
+		g2d.setColor(Color.decode("#492415"));
+		for(int i=0; i<26; i++) {
+			g2d.fillRect(30 + x, 680, 10, 200);
+			x+=50;
+		}
+		int y=0;
+		for(int i=0; i<4; i++) {
+			g2d.fillRect(0, 710 + y, this.getWidth(), 10);
+			y+=50;
+		}
+		
+		//Cuadro verde derecha.
+		g2d.setColor(Color.decode("#2FCF04"));
+		g2d.fillRect(790 + 300, 430, 210, 200);
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(8));
+		g2d.drawRoundRect(790+ 300 , 430, 210,200,15,15);
+		
+		//Tornillos verde
+		x=0;
+		y=0;
+		
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(809+ 300, 445, 18, 8);
+		g2d.fillRect(801+ 300, 453 , 8, 18);
+		g2d.fillRect(809+ 300, 471, 18, 8);
+		g2d.fillRect(827+ 300, 453, 8, 18);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawLine(1110, 470, 1125, 454);
+		
+		y=135;
+		
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(809+ 300, 445 + y, 18, 8);
+		g2d.fillRect(801+ 300, 453 + y , 8, 18);
+		g2d.fillRect(809+ 300, 471 + y, 18, 8);
+		g2d.fillRect(827+ 300, 453 + y, 8, 18);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawLine(1110, 470 + y, 1125, 454 + y);
+		
+		
+		//Cuadro azul centro
+		g2d.setColor(Color.decode("#3C9FE3"));
+		g2d.fillRect(300, 280, 250, 350);
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(8));
+		g2d.drawRoundRect(300, 280, 250,350,15,15);
+		
+		//Cuadro de fondo crema
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(8));
+		g2d.fillRoundRect(240, 460, 210,170,15,15);
+		
+		
+		//Cuadro crema centro
+		g2d.setColor(Color.decode("#FFB9A3"));
+		g2d.fillRect(170, 430, 210, 200);
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(8));
+		g2d.drawRoundRect(170, 430, 210,200,15,15);
+		
+		
+		//Tornillos crema
+		x=620;
+		y=0;
+		
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(809 - x, 445, 18, 8);
+		g2d.fillRect(801 - x, 453 , 8, 18);
+		g2d.fillRect(809 - x, 471, 18, 8);
+		g2d.fillRect(827 - x, 453, 8, 18);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawLine(1110  - x - 300, 470, 1125  - x-300, 454);
+		
+		y=135;
+		
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(809 - x, 445 + y, 18, 8);
+		g2d.fillRect(801 - x, 453 + y , 8, 18);
+		g2d.fillRect(809 - x, 471 + y, 18, 8);
+		g2d.fillRect(827 - x, 453 + y, 8, 18);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawLine(1110  - x - 300, 470 + y, 1125 - x -300, 454 + y);
+		
+		
+	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.print("X = " + e.getX());
+		System.out.print(" Y = " + e.getY());
+		System.out.print("\n");
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

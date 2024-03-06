@@ -8,7 +8,7 @@ public class Main {
 		
 		v1.setVisible(true);
 		
-		System.out.print("hola");
+
 	}
 
 }
