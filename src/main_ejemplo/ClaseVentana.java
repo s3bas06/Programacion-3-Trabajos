@@ -788,6 +788,27 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.setColor(Color.decode("#94FCFF"));
 		g2d.fillRect(0,0,this.getWidth(),this.getHeight());
 		
+		//Tubería.
+		//Color verde claro
+		g2d.setColor(Color.decode("#1C770C"));
+		g2d.fillRect(760, 400, 80, 263);
+
+		//Color verde medio
+		g2d.setColor(Color.decode("#19660B"));
+		g2d.fillRect(830, 400, 80, 263);
+		
+		//Color verde oscuro
+		g2d.setColor(Color.decode("#15530A"));
+		g2d.fillRect(860, 400, 65, 263);
+		g2d.fillRect(860, 400, 80, 63);
+		
+		//Rectangulo superior.
+		g2d.setStroke(new BasicStroke(5));
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(720, 400, 220, 63);
+		//Tubo.
+		g2d.drawRect(735, 463, 190, 200);
+		
 		//Cuadro de fondo azul
 		g2d.setColor(Color.BLACK);
 		g2d.setStroke(new BasicStroke(8));
@@ -798,6 +819,7 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.fillRect(0, 630, this.getWidth(), 100);
 		g2d.setColor(Color.decode("#B14E26"));
 		g2d.fillRect(0, 680, this.getWidth(), 200);
+		
 		//Recuadros del suelo.
 		int x=0;
 		g2d.setColor(Color.decode("#492415"));
@@ -818,28 +840,9 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.setStroke(new BasicStroke(8));
 		g2d.drawRoundRect(790+ 300 , 430, 210,200,15,15);
 		
-		//Tornillos verde
-		x=0;
-		y=0;
-		
-		g2d.setColor(Color.BLACK);
-		g2d.fillRect(809+ 300, 445, 18, 8);
-		g2d.fillRect(801+ 300, 453 , 8, 18);
-		g2d.fillRect(809+ 300, 471, 18, 8);
-		g2d.fillRect(827+ 300, 453, 8, 18);
-		g2d.setStroke(new BasicStroke(5));
-		g2d.drawLine(1110, 470, 1125, 454);
-		
-		y=135;
-		
-		g2d.setColor(Color.BLACK);
-		g2d.fillRect(809+ 300, 445 + y, 18, 8);
-		g2d.fillRect(801+ 300, 453 + y , 8, 18);
-		g2d.fillRect(809+ 300, 471 + y, 18, 8);
-		g2d.fillRect(827+ 300, 453 + y, 8, 18);
-		g2d.setStroke(new BasicStroke(5));
-		g2d.drawLine(1110, 470 + y, 1125, 454 + y);
-		
+		//Tornillos cuadro verde.
+		tornillos(g,1115,446,18,8,5);
+		tornillos(g,1115,580,18,8,5);
 		
 		//Cuadro azul centro
 		g2d.setColor(Color.decode("#3C9FE3"));
@@ -847,6 +850,11 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.setColor(Color.BLACK);
 		g2d.setStroke(new BasicStroke(8));
 		g2d.drawRoundRect(300, 280, 250,350,15,15);
+		
+		//Tornillos cuadro azul centro
+		tornillos(g,320,298,18,8,5);
+		tornillos(g,510,298,18,8,5);
+		tornillos(g,510,580,18,8,5);
 		
 		//Cuadro de fondo crema
 		g2d.setColor(Color.BLACK);
@@ -861,32 +869,77 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.setStroke(new BasicStroke(8));
 		g2d.drawRoundRect(170, 430, 210,200,15,15);
 		
+		//Tornillos cuadro crema 
+		tornillos(g,190,443,18,8,5);
+		tornillos(g,190,590,18,8,5);
+		tornillos(g,340,443,18,8,5);
+		tornillos(g,340,590,18,8,5);
 		
-		//Tornillos crema
-		x=620;
-		y=0;
+		//Bloques
+		bloques(g, 250,100);
+		bloques(g,330,100);
+		bloques(g,50,300);		
+		bloques(g,1100,300);
 		
-		g2d.setColor(Color.BLACK);
-		g2d.fillRect(809 - x, 445, 18, 8);
-		g2d.fillRect(801 - x, 453 , 8, 18);
-		g2d.fillRect(809 - x, 471, 18, 8);
-		g2d.fillRect(827 - x, 453, 8, 18);
-		g2d.setStroke(new BasicStroke(5));
-		g2d.drawLine(1110  - x - 300, 470, 1125  - x-300, 454);
+		//SPRITES DE LOS PERSONAJES.
 		
-		y=135;
+		BufferedImage image;
+		try {
+			image = ImageIO.read(new File("src/main_ejemplo/mario3.png"));
+			g2d.drawImage(image, 590,520,100,130, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		g2d.setColor(Color.BLACK);
-		g2d.fillRect(809 - x, 445 + y, 18, 8);
-		g2d.fillRect(801 - x, 453 + y , 8, 18);
-		g2d.fillRect(809 - x, 471 + y, 18, 8);
-		g2d.fillRect(827 - x, 453 + y, 8, 18);
-		g2d.setStroke(new BasicStroke(5));
-		g2d.drawLine(1110  - x - 300, 470 + y, 1125 - x -300, 454 + y);
+		try {
+			image = ImageIO.read(new File("src/main_ejemplo/arbusto.png"));
+			g2d.drawImage(image, -40,530,280,150, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			image = ImageIO.read(new File("src/main_ejemplo/piranha.png"));
+			g2d.drawImage(image, 710,208,200,200, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}
-
+	
+	public void tornillos(Graphics g, int x, int y, int i, int j, int stroke) {
+		g.setColor(Color.BLACK);
+		g.fillRect(x, y, i, j);
+		g.fillRect(x - j, y + j , j, i);
+		g.fillRect(x, y + i + j, i, j);
+		g.fillRect(x + i, y + j, j, i);
+		g.setColor(Color.white);
+		g.fillRect(x, y+j, i, i);
+		g.setColor(Color.black);
+		((Graphics2D) g).setStroke(new BasicStroke(stroke));
+		g.drawLine(x+i - 2, y+j, x + 2, y+j + i);
+	}
+	
+	public void bloques(Graphics g, int x, int y) {
+		Graphics2D g2d = (Graphics2D)g;
+		
+		//Cuadrado
+		g2d.setColor(Color.decode("#D59646"));
+		g2d.fillRect(x, y, 80, 80);
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawRect(x, y, 80,80);
+		g2d.fillRect(x + 7, y + 7, 7, 7);
+		g2d.fillRect(x + 7, y + 73 - 7, 7, 7);
+		g2d.fillRect(x + 65, y + 7, 7, 7);
+		g2d.fillRect(x + 65, y + 65, 7, 7);
+		
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
