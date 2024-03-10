@@ -774,9 +774,9 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.setColor(Color.YELLOW);
 		g2d.fillRect(685, 480, 15, 25);
 	}
-	 */
-	
-	//Paint para la imagen de Mario Bros.
+	 
+	*/
+	/*/Paint para la imagen de Mario Bros 3.
 	//////////////////////////////////////////////////////////////
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -910,6 +910,7 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		
 		
 	}
+	*/
 	
 	public void tornillos(Graphics g, int x, int y, int i, int j, int stroke) {
 		g.setColor(Color.BLACK);
@@ -937,7 +938,130 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.fillRect(x + 7, y + 73 - 7, 7, 7);
 		g2d.fillRect(x + 65, y + 7, 7, 7);
 		g2d.fillRect(x + 65, y + 65, 7, 7);
+	}
+	
+	
+	public void paint(Graphics g) {
+		Graphics2D g2d = (Graphics2D)g;
 		
+		//Fondo
+		g2d.setColor(Color.decode("#2082DD"));
+		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		nubes(g2d,50,490,60,60,350);
+		nubes(g2d,400,550,55,55,350);
+		nubes(g2d,900,210,60,60,100);
+		
+		
+		
+		mountains(g2d,20,250,200,200,500);
+		mountains(g2d,550,250,200,200,500);
+		mountains(g2d,750,100,200,200,500);
+		
+		nubes(g2d,380,430,55,55,350);
+		nubes(g2d,-300,350,40,40,350);
+		nubes(g2d,240,340,60,60,200);
+		
+		nubes(g2d,960,140,50,50,80);
+	
+		
+		mountainsblue(g2d,560,430,350,350,500);
+		mountainsblue(g2d,-100,430,250,250,500);
+		mountainsblue(g2d,910,250,250,250,500);
+		
+		//Suelo base.
+		g2d.setColor(Color.decode("#FCD083"));
+		g2d.fillRect(0, 600, this.getWidth(), 300);
+		
+		BufferedImage image;
+		try {
+			image = ImageIO.read(new File("src/main_ejemplo/pipe sprite.jpg"));
+			g2d.drawImage(image, 1220,500,130,130, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g2d.setColor(Color.WHITE);
+		g2d.fillOval(1020, 545, 150, 100);
+		
+		//Cesped
+		g2d.setColor(Color.decode("#5CF016"));
+		g2d.fillRect(0, 600, this.getWidth(), 50);
+		g2d.setColor(Color.black);
+		g2d.drawRect(0,600,this.getWidth(),50);		
+		
+		
+		bloquesgrises(g,1150,550);
+		bloquesgrises(g,1150,500);
+		bloquesgrises(g,1150,450);
+		bloquesgrises(g,1150,400);
+		
+		bloquesamarillos(g,1200,400);
+		bloquesamarillos(g,1250,400);
+		
+		try {
+			image = ImageIO.read(new File("src/main_ejemplo/pipe sprite.jpg"));
+			g2d.drawImage(image, 630,420,130,180, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Ovalos de las mountains
+		g2d.setColor(Color.WHITE);
+		g2d.fillOval(970, 320, 30, 40);
+		g2d.fillOval(1070, 500, 30, 40);
+		
+		
+		
+	}
+	
+	public void mountains(Graphics2D g2d, int x, int y, int width, int heightcircle, int height) {
+		g2d.setColor(Color.decode("#B3ECE2"));
+		g2d.fillArc(x, y, width, heightcircle, 0, 180);
+		g2d.fillRect(x,y+(width/2),width,height);
+
+	}
+	
+	public void mountainsblue(Graphics2D g2d, int x, int y, int width, int heightcircle, int height) {
+		g2d.setColor(Color.decode("#63A0D7"));
+		g2d.fillArc(x, y, width, heightcircle, 0, 180);
+		g2d.fillRect(x,y+(width/2),width,height);
+		g2d.setColor(Color.black);
+		g2d.drawLine(x, y+(width/2), x, y+(width/2)+ height);
+		g2d.drawLine(x + width, y+(width/2),x + width, y+(width/2)+ height);
+		g2d.drawArc(x, y, width, heightcircle, 0, 180);
+	}
+	
+	public void bloquesgrises(Graphics g, int x, int y) {
+		Graphics2D g2d = (Graphics2D)g;
+		
+		//Cuadrado
+		g2d.setColor(Color.decode("#A9A1A1"));
+		g2d.fillRoundRect(x, y, 50,50,20,20);
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawRoundRect(x, y, 50, 50, 20, 20);
+	}
+	
+	public void bloquesamarillos(Graphics g, int x, int y) {
+		Graphics2D g2d = (Graphics2D)g;
+		
+		//Cuadrado
+		g2d.setColor(Color.decode("#FFDC23"));
+		g2d.fillRoundRect(x, y, 50,50,20,20);
+		g2d.setColor(Color.BLACK);
+		g2d.setStroke(new BasicStroke(5));
+		g2d.drawRoundRect(x, y, 50, 50, 20, 20);
+		g2d.fillRect(x + 15, y + 15, 5, 20);
+		g2d.fillRect(x + 30, y + 15, 5, 20);
+	}
+	
+	public void nubes(Graphics2D g2d, int x, int y, int width, int heightcircle, int widthRect) {
+		g2d.setColor(Color.WHITE);
+		g2d.fillArc(x, y, width, heightcircle,90, 180);
+		g2d.fillRect(x + (width/2), y, widthRect, width);
+		g2d.fillArc(x + widthRect, y, width, heightcircle, 270, 180);
 	}
 	
 	@Override
