@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Stroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -36,6 +38,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 public class ClaseVentana extends JFrame implements MouseListener{
@@ -47,13 +50,13 @@ public class ClaseVentana extends JFrame implements MouseListener{
 
 		setLocationRelativeTo(null);
 
-		//this.setSize(1000,1000); //este es para lo que no son calculadoras
+		this.setSize(1000,800); //este es para lo que no son calculadoras
 		
 		//this.setSize(305,430); //este es para la calculadora.
 		
 		//this.setSize(1280,720); //este es para el segundo login.
 		
-		this.setSize(1300,800);
+		//this.setSize(1300,800);
 		
 		this.setVisible(true);
 
@@ -84,15 +87,15 @@ public class ClaseVentana extends JFrame implements MouseListener{
 	
 	public void IniciarComponentes() {
 		JPanel panel = new JPanel();
-		//this.login(panel);
-		//this.register(panel);
+		this.login(panel);
+		this.register(panel);
 		//this.admin();
 		//this.calculadora();	
 		//this.login2();
 		//this.gridCalculadora();
 		//this.CalcularInteres();
 		
-		this.paint(getGraphics());
+		//this.paint(getGraphics());
 		
 		this.repaint();
 		this.revalidate();
@@ -194,6 +197,39 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		JButton register_button = new JButton("Registro");
 		register_button.setBounds(660,500,200,50);
 		register_button.setFont(new Font("ARIAL", Font.BOLD, 25));
+		
+		register_button.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String usr = user.getText();
+				String biografia = biotext.getText();
+				
+				if(usr.length()<=0) {
+					user.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+				}
+				else {
+					user.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+				}
+				
+				if(biografia.length()<=0) {
+					biotext.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+				}
+				else {
+					biotext.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+				}
+				
+				if(rdbtn1.isSelected()) {
+					rdbtn1.setBorderPainted(true);
+					rdbtn1.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+				}
+				else {
+					rdbtn1.setBorderPainted(true);
+					rdbtn1.setBorder(BorderFactory.createLineBorder(Color.RED,3));
+				}
+				
+				
+			}});
 		register.add(register_button);
 		
 		this.add(register);
@@ -202,7 +238,8 @@ public class ClaseVentana extends JFrame implements MouseListener{
 	
 	public void login(JPanel panel) {
 		JPanel login = new JPanel();
-		login.setSize(500,960);
+		login.setLocation(0,0);
+		login.setSize(500,800);
 		login.setBackground(Color.GRAY);
 		login.setLayout(null);
 
@@ -256,16 +293,59 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		olvidaste.setForeground(Color.black);
 		olvidaste.setLayout(null);
 		login.add(olvidaste);
-
+		
 		JButton acceder = new JButton();
 		acceder.setBounds(60,300, 200, 50);
 		acceder.setText("Acceder");
 		acceder.setFont(new Font("ARIAL",Font.BOLD,25));
 		login.add(acceder);
 		
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String usr = user.getText();
+				String pwd = new String(password.getPassword());
+				
+				
+				if(usr.equals("s0bas")) {
+					if((pwd.equals("hola"))) {
+						System.out.print("Bienvenido " + usr);
+					}
+					else {
+						System.out.print("Contraseña incorrecta");
+					}
+				}
+				else {
+					System.out.print("Usuario no encontrado.");
+				}
+				
+				if(usr.equals("")) {
+					System.out.print("No ha ingresado un usuario. \n");
+					Border border = BorderFactory.createLineBorder(Color.RED,3);
+					user.setBorder(border);					
+				}
+				else {
+					user.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+				}
+				
+				if(pwd.equals("")) {
+					System.out.print("No ha ingresado una contraseña. \n");
+					Border border = BorderFactory.createLineBorder(Color.RED,3);
+					password.setBorder(border);					
+				}
+				else {
+					password.setBorder(BorderFactory.createLineBorder(Color.GREEN,3));
+				}
+				
+				
+			}});
+		
+		
 		JLabel logo = new JLabel();
 		logo.setIcon(new ImageIcon(getClass().getResource("felicitaciones.png")));
-		logo.setBounds(100,500,256,256);
+		logo.setBounds(70,500,256,256);
 		login.add(logo);
 		
 		this.add(login);
@@ -910,7 +990,6 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		
 		
 	}
-	*/
 	
 	public void tornillos(Graphics g, int x, int y, int i, int j, int stroke) {
 		g.setColor(Color.BLACK);
@@ -1064,12 +1143,14 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		g2d.fillArc(x + widthRect, y, width, heightcircle, 270, 180);
 	}
 	
+	
+	*/
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.print("X = " + e.getX());
+		/*System.out.print("X = " + e.getX());
 		System.out.print(" Y = " + e.getY());
-		System.out.print("\n");
+		System.out.print("\n");*/
 	}
 
 	@Override
