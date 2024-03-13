@@ -31,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -87,18 +88,67 @@ public class ClaseVentana extends JFrame implements MouseListener{
 	
 	public void IniciarComponentes() {
 		JPanel panel = new JPanel();
-		this.login(panel);
-		this.register(panel);
+		//this.login(panel);
+		//this.register(panel);
 		//this.admin();
 		//this.calculadora();	
 		//this.login2();
 		//this.gridCalculadora();
 		//this.CalcularInteres();
 		
+		this.botones();
+		
 		//this.paint(getGraphics());
 		
 		this.repaint();
 		this.revalidate();
+	}
+	
+	public void botones() {
+		this.setSize(500,750);
+		
+		//Panel
+		JPanel mainPanel = new JPanel();
+		mainPanel.setSize(this.getWidth(),this.getHeight());
+		mainPanel.setLocation(0,0);
+		mainPanel.setBackground(Color.RED);
+		mainPanel.setLayout(null);
+		
+		JButton btnCentral = new JButton("Click me");
+		btnCentral.setBounds(150,300,200,50);
+		btnCentral.setFont(new Font("ARIAL", Font.BOLD, 25));
+		
+		mainPanel.add(btnCentral);
+		
+		btnCentral.addActionListener(new ActionListener() {
+			
+			
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int getX = (int)Math.floor(Math.random()*450 + 1);
+				int getY = (int)Math.floor(Math.random()*650 + 1);
+				
+				int getW = (int)Math.floor(Math.random()*120+1);
+				int getH = (int)Math.floor(Math.random()*120+1);
+				
+				int r = (int)Math.floor(Math.random()*255+1);
+				int g = (int)Math.floor(Math.random()*255+1);
+				int b = (int)Math.floor(Math.random()*255+1);
+				
+				JButton otroBtn = new JButton(r+", " + g + ", " + b);
+				otroBtn.setBorder(BorderFactory.createLineBorder(new Color(r,g,b),3));
+				otroBtn.setBounds(getX,getY, getW, getH);
+				
+				mainPanel.add(otroBtn);
+				
+				getContentPane().repaint();
+				getContentPane().revalidate();
+			}});
+		
+		
+		this.add(mainPanel);
 	}
 	
 	public void register(JPanel panel) {
