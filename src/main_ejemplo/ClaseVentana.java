@@ -141,6 +141,18 @@ public class ClaseVentana extends JFrame implements MouseListener{
 				otroBtn.setBorder(BorderFactory.createLineBorder(new Color(r,g,b),3));
 				otroBtn.setBounds(getX,getY, getW, getH);
 				
+				otroBtn.addActionListener(new ActionListener( ) {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						String btnText = ((JButton)e.getSource()).getActionCommand();
+						JOptionPane.showMessageDialog(null, btnText);
+						
+					}});
+				
+				
+				
 				mainPanel.add(otroBtn);
 				
 				getContentPane().repaint();
