@@ -46,6 +46,8 @@ public class ClaseVentana extends JFrame implements MouseListener{
 
 	private static final long serialVersionUID = 1L;
 	
+	JPanel mainPanel;
+	
 	public ClaseVentana() {
 		setTitle("Jpanel");
 
@@ -108,7 +110,7 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		this.setSize(500,750);
 		
 		//Panel
-		JPanel mainPanel = new JPanel();
+		mainPanel = new JPanel();
 		mainPanel.setSize(this.getWidth(),this.getHeight());
 		mainPanel.setLocation(0,0);
 		mainPanel.setBackground(Color.RED);
@@ -1217,8 +1219,37 @@ public class ClaseVentana extends JFrame implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
+		int getX = e.getX(); 
+		int getY = e.getY();
+		
+		int getW = (int)Math.floor(Math.random()*120+1);
+		int getH = (int)Math.floor(Math.random()*120+1);
+		
+		int r = (int)Math.floor(Math.random()*255+1);
+		int g = (int)Math.floor(Math.random()*255+1);
+		int b = (int)Math.floor(Math.random()*255+1);
+		
+		JButton btnClick = new JButton(r+", " + g + ", " + b);
+		btnClick.setBorder(BorderFactory.createLineBorder(new Color(r,g,b),3));
+		btnClick.setBounds(getX,getY, getW,getH);
+		
+		mainPanel.add(btnClick);
+
+		btnClick.addActionListener(new ActionListener( ) {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String btnText = ((JButton)e.getSource()).getActionCommand();
+				JOptionPane.showMessageDialog(null, btnText);
+				
+			}});
+		
+		getContentPane().repaint();
+		getContentPane().revalidate();
+		
+		System.out.print("HOLAAA ");
 	}
 
 	@Override
