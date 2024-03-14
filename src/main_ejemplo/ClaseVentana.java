@@ -3,6 +3,7 @@ package main_ejemplo;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -1289,6 +1290,17 @@ public class ClaseVentana extends JFrame implements MouseListener, KeyListener{
 		
 		
 		int z = (int)e.getKeyChar();
+		
+		System.out.print(z + " " + e.getKeyChar() + "\n");
+		
+		Component[] elements = mainPanel.getComponents();
+		
+		for(int i = 0; i<elements.length; i++) {
+			if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
+				JButton actual = (JButton)elements[i];
+				actual.setSize(actual.getWidth() + 60, actual.getHeight() + 60);
+			}
+		}
 		
 		if(z == 127) {
 			mainPanel.removeAll();
