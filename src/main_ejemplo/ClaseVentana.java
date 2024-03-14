@@ -12,6 +12,8 @@ import java.awt.GridLayout;
 import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -42,7 +44,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class ClaseVentana extends JFrame implements MouseListener{
+public class ClaseVentana extends JFrame implements MouseListener, KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -78,6 +80,7 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		this.setLocationRelativeTo(null);
 		
 		this.addMouseListener(this);
+		this.addKeyListener(this);
 		
 		IniciarComponentes();
 		
@@ -1270,6 +1273,33 @@ public class ClaseVentana extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+		int z = (int)e.getKeyChar();
+		
+		if(z == 127) {
+			mainPanel.removeAll();
+			getContentPane().repaint();
+			getContentPane().revalidate();
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
