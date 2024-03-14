@@ -148,8 +148,10 @@ public class ClaseVentana extends JFrame implements MouseListener{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
-						String btnText = ((JButton)e.getSource()).getActionCommand();
-						JOptionPane.showMessageDialog(null, btnText);
+						JButton yo = ((JButton)e.getSource());
+						mainPanel.remove(yo);
+						getContentPane().repaint();
+						getContentPane().revalidate();
 						
 					}});
 				
@@ -1248,8 +1250,6 @@ public class ClaseVentana extends JFrame implements MouseListener{
 		
 		getContentPane().repaint();
 		getContentPane().revalidate();
-		
-		System.out.print("HOLAAA ");
 	}
 
 	@Override
