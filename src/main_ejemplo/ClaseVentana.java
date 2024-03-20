@@ -1295,10 +1295,53 @@ public class ClaseVentana extends JFrame implements MouseListener, KeyListener{
 		
 		Component[] elements = mainPanel.getComponents();
 		
-		for(int i = 0; i<elements.length; i++) {
-			if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
-				JButton actual = (JButton)elements[i];
-				actual.setSize(actual.getWidth() + 60, actual.getHeight() + 60);
+		if(z == 98) {
+			for(int i = 0; i<elements.length; i++) {
+				if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
+					JButton actual = (JButton)elements[i];
+					actual.setSize(actual.getWidth() + 60, actual.getHeight() + 60);
+				}
+			}
+		}
+		
+		//Tecla w
+		if(z == 119) {
+			for(int i = 0; i<elements.length; i++) {
+				if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
+					JButton actual = (JButton)elements[i];
+					actual.setLocation(actual.getX(),actual.getY() - 60);
+				}
+			}
+		}
+		
+		//Tecla s
+		
+		if(z == 115) {
+			for(int i = 0; i<elements.length; i++) {
+				if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
+					JButton actual = (JButton)elements[i];
+					actual.setLocation(actual.getX(),actual.getY() + 60);
+				}
+			}
+		}
+		// Tecla a
+		
+		if(z == 97) {
+			for(int i = 0; i<elements.length; i++) {
+				if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
+					JButton actual = (JButton)elements[i];
+					actual.setLocation(actual.getX() - 60,actual.getY());
+				}
+			}
+		}
+		//Tecla d
+		
+		if(z == 100) {
+			for(int i = 0; i<elements.length; i++) {
+				if(elements[i].getClass().toString().equals("class javax.swing.JButton")) {
+					JButton actual = (JButton)elements[i];
+					actual.setLocation(actual.getX() + 60,actual.getY());
+				}
 			}
 		}
 		
