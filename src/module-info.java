@@ -4,6 +4,6 @@
 /**
  * 
  */
-module EvaluacionUnidad2 {
+module main_ejemplo {
 	requires java.desktop;
 }
