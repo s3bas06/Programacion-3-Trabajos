@@ -4,6 +4,6 @@
 /**
  * 
  */
-module main_ejemplo {
+module LoginRegister {
 	requires java.desktop;
 }
