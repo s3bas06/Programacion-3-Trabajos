@@ -20,12 +20,12 @@ import java.awt.event.ActionEvent;
 
 public class Register {
 
-	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	private JFrame frmPrograma;
+	private JTextField textFieldRegister;
+	private JTextField textFieldRegister_1;
+	private JTextField textFieldRegister_2;
+	private JPasswordField passwordFieldRegister;
+	private JPasswordField passwordFieldRegister_1;
 
 	/**
 	 * Launch the application.
@@ -35,7 +35,7 @@ public class Register {
 			public void run() {
 				try {
 					Register window = new Register();
-					window.frame.setVisible(true);
+					window.frmPrograma.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,17 +54,18 @@ public class Register {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 605, 719);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPrograma = new JFrame();
+		frmPrograma.setTitle("Programa");
+		frmPrograma.setBounds(100, 100, 605, 719);
+		frmPrograma.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(64, 0, 128));
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Iniciar sesión");
-		lblNewLabel.setBounds(190, 69, 191, 40);
+		JLabel lblNewLabel = new JLabel("Crea tu cuenta");
+		lblNewLabel.setBounds(170, 66, 252, 40);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
@@ -86,17 +87,17 @@ public class Register {
 		lblNewLabel_1_1.setBounds(351, 156, 129, 23);
 		panel.add(lblNewLabel_1_1);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField.setColumns(10);
-		textField.setBounds(99, 177, 175, 40);
-		panel.add(textField);
+		textFieldRegister = new JTextField();
+		textFieldRegister.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldRegister.setColumns(10);
+		textFieldRegister.setBounds(99, 177, 175, 40);
+		panel.add(textFieldRegister);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_1.setColumns(10);
-		textField_1.setBounds(305, 177, 175, 40);
-		panel.add(textField_1);
+		textFieldRegister_1 = new JTextField();
+		textFieldRegister_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldRegister_1.setColumns(10);
+		textFieldRegister_1.setBounds(305, 177, 175, 40);
+		panel.add(textFieldRegister_1);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Correo electrónico");
 		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -106,11 +107,11 @@ public class Register {
 		lblNewLabel_1_2.setBounds(134, 239, 140, 23);
 		panel.add(lblNewLabel_1_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField_2.setColumns(10);
-		textField_2.setBounds(144, 260, 271, 40);
-		panel.add(textField_2);
+		textFieldRegister_2 = new JTextField();
+		textFieldRegister_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldRegister_2.setColumns(10);
+		textFieldRegister_2.setBounds(144, 260, 271, 40);
+		panel.add(textFieldRegister_2);
 		
 		JLabel lblNewLabel_1_2_1 = new JLabel("Contraseña");
 		lblNewLabel_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -120,9 +121,9 @@ public class Register {
 		lblNewLabel_1_2_1.setBounds(137, 311, 94, 23);
 		panel.add(lblNewLabel_1_2_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(144, 334, 271, 40);
-		panel.add(passwordField);
+		passwordFieldRegister = new JPasswordField();
+		passwordFieldRegister.setBounds(144, 334, 271, 40);
+		panel.add(passwordFieldRegister);
 		
 		JLabel lblNewLabel_1_2_1_1 = new JLabel("Confirmar contraseña");
 		lblNewLabel_1_2_1_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -132,9 +133,9 @@ public class Register {
 		lblNewLabel_1_2_1_1.setBounds(136, 383, 152, 23);
 		panel.add(lblNewLabel_1_2_1_1);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setBounds(144, 408, 271, 40);
-		panel.add(passwordField_1);
+		passwordFieldRegister_1 = new JPasswordField();
+		passwordFieldRegister_1.setBounds(144, 408, 271, 40);
+		panel.add(passwordFieldRegister_1);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Acepto los términos y condiciones, vendo mi alma al diablo");
 		chckbxNewCheckBox.setForeground(new Color(255, 255, 255));
@@ -146,8 +147,8 @@ public class Register {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				char[] password1 = passwordField.getPassword();
-				char[] password2 = passwordField_1.getPassword();
+				char[] password1 = passwordFieldRegister.getPassword();
+				char[] password2 = passwordFieldRegister_1.getPassword();
 				Boolean flag = true;
 				
 				if(password1.length != password2.length) {
