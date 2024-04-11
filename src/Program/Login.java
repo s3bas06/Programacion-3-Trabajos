@@ -27,9 +27,8 @@ import java.awt.event.ActionEvent;
 public class Login {
 
 	private JFrame frmPrograma;
-	private JTextField textField;
 	private JPasswordField passwordField;
-	private JPasswordField passwordFieldRecuperar;
+	private JTextField textField;
 	private JTextField textFieldRegister;
 	private JTextField textFieldRegister_1;
 	private JTextField textFieldRegister_2;
@@ -87,6 +86,7 @@ public class Login {
 		menuUsuarios.add(altaItem);
 		menuUsuarios.add(bajaItem);
 		menuUsuarios.add(consultarItem);
+		
 		//Menu ayuda
 		JMenu menuAyuda = new JMenu("Ayuda");
 		JMenuItem crearItem = new JMenuItem("¿Cómo crear un usuario?");
@@ -103,8 +103,23 @@ public class Login {
 		frmPrograma.setJMenuBar(barra);
 		
 		//this.register(frmPrograma);
-		//this.login(frmPrograma);
-		this.recuperarCuenta(frmPrograma);
+		this.login(frmPrograma);
+		//this.recuperarCuenta(frmPrograma);
+		
+		//this.cuentaAlta(frmPrograma);
+		//this.cuentaBaja(frmPrograma);
+		//this.cuentaConsultar(frmPrograma);
+		
+		//this.ayudaAcceder(frmPrograma);
+		//this.ayudaCrear(frmPrograma);
+		//this.ayudaRecuperar(frmPrograma);
+		
+		
+		/* 
+		 *
+		 *AccionListener para los items del menuCuenta
+		 * 
+		 */
 		
 		loginItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,7 +149,72 @@ public class Login {
 				}
 		});
 		
-		//this.login(frmPrograma);
+		/* 
+		 *
+		 *AccionListener para los items del menuUsuarios
+		 * 
+		 */
+		altaItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.getContentPane().removeAll();
+				cuentaAlta(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+				}
+		});
+		
+		bajaItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.getContentPane().removeAll();
+				cuentaBaja(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				}
+		});
+		
+		consultarItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.getContentPane().removeAll();
+				cuentaConsultar(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				}
+		});
+		
+		/* 
+		 *
+		 *AccionListener para los items del menuAyuda
+		 * 
+		 */
+		crearItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.getContentPane().removeAll();
+				ayudaCrear(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+				}
+		});
+		
+		accederItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.getContentPane().removeAll();
+				ayudaAcceder(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				}
+		});
+		
+		olvidarItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.getContentPane().removeAll();
+				ayudaRecuperar(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				}
+		});
+		
 		
 		
 	}
@@ -411,31 +491,19 @@ public class Login {
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setBackground(new Color(0, 0, 0));
 		
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setBackground(new Color(255, 0, 255));
-		panel_1_1.setBounds(141, 234, 302, 30);
-		panel.add(panel_1_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Ingrese la ultima contraseña que recuerde");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBackground(Color.BLACK);
-		panel_1_1.add(lblNewLabel_1_1);
-		
-		passwordFieldRecuperar = new JPasswordField();
-		passwordFieldRecuperar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		passwordFieldRecuperar.setBounds(141, 263, 302, 40);
-		panel.add(passwordFieldRecuperar);
-		
 		JButton btnNewButton = new JButton("Recuperar cuenta");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Imposible acceder", "Error", JOptionPane.ERROR_MESSAGE);
+				if(textField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Ingrese un correo electrónico", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Success", "Válido", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnNewButton.setBounds(141, 337, 302, 40);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(141, 247, 302, 52);
 		panel.add(btnNewButton);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Utilizar otro método");
@@ -443,10 +511,10 @@ public class Login {
 		lblNewLabel_1_2.setForeground(Color.WHITE);
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_1_2.setBackground(Color.BLACK);
-		lblNewLabel_1_2.setBounds(210, 395, 164, 17);
+		lblNewLabel_1_2.setBounds(205, 368, 164, 17);
 		panel.add(lblNewLabel_1_2);
 		
-		JButton btnNewButton_1 = new JButton("Volver a inicio de sesión");
+		JButton btnNewButton_1 = new JButton("Olvidalo, ya recordé mi contraseña");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -457,9 +525,178 @@ public class Login {
 				
 			}
 		});
-		btnNewButton_1.setBounds(165, 434, 250, 23);
+		btnNewButton_1.setBounds(197, 318, 195, 23);
+		panel.add(btnNewButton_1);
+	}
+	
+	private void cuentaAlta(JFrame frmPrograma) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 128, 255));
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Dar cuenta de alta");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(141, 69, 302, 40);
+		panel.add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Regresar a inicio de sesión");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.remove(panel);
+				login(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+			}
+		});
+		btnNewButton_1.setBounds(197, 318, 195, 23);
+		panel.add(btnNewButton_1);
+	}
+	
+	private void cuentaBaja(JFrame frmPrograma) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(128, 255, 128));
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Dar cuenta de baja");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(141, 69, 302, 40);
+		panel.add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Regresar a inicio de sesión");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.remove(panel);
+				login(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+			}
+		});
+		btnNewButton_1.setBounds(197, 318, 195, 23);
+		panel.add(btnNewButton_1);
+	}
+
+	private void cuentaConsultar(JFrame frmPrograma) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 255));
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Consultar cuenta");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(141, 69, 302, 40);
+		panel.add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Regresar a inicio de sesión");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.remove(panel);
+				login(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+			}
+		});
+		btnNewButton_1.setBounds(197, 318, 195, 23);
+		panel.add(btnNewButton_1);
+	}
+	
+	private void ayudaCrear(JFrame frmPrograma) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 128, 192));
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Cómo crear un usuario?");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(105, 69, 386, 40);
+		panel.add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Regresar a inicio de sesión");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.remove(panel);
+				login(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+			}
+		});
+		btnNewButton_1.setBounds(197, 318, 195, 23);
+		panel.add(btnNewButton_1);
+	}
+	
+	private void ayudaAcceder(JFrame frmPrograma) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 128, 0));
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Cómo acceder al sistema?");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(78, 69, 438, 40);
+		panel.add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Regresar a inicio de sesión");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.remove(panel);
+				login(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+			}
+		});
+		btnNewButton_1.setBounds(197, 318, 195, 23);
+		panel.add(btnNewButton_1);
+	}
+	
+	private void ayudaRecuperar(JFrame frmPrograma) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 128, 192));
+		frmPrograma.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Qué pasa si olvidé mi contraseña?");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 68, 569, 40);
+		panel.add(lblNewLabel);
+		
+		JButton btnNewButton_1 = new JButton("Regresar a inicio de sesión");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmPrograma.remove(panel);
+				login(frmPrograma);
+				frmPrograma.repaint();
+				frmPrograma.revalidate();
+				
+			}
+		});
+		btnNewButton_1.setBounds(197, 318, 195, 23);
 		panel.add(btnNewButton_1);
 	}
 }
+
 
 
