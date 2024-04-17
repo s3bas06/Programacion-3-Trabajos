@@ -15,10 +15,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class TableroDibujo{
-
-
-	private JFrame frame;
+	
 	public int x = 530,y=300;
+	
+	private player p1 = new player(x,y,50,50, "#33FFF3");
+	private player obstaculo1 = new player(100,100,100,20,"#FFFC33");
+	
+	private JFrame frame;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -77,26 +81,39 @@ public class TableroDibujo{
 			public void keyPressed(KeyEvent e) {
 				
 				System.out.println(e.getKeyCode());
+				Boolean flag = p1.colision(obstaculo1);
 				
-				switch(e.getKeyCode()) {
-				case 87: 
-					y -= 10;
-					
-				break;
-
-				case 65: 
-					x-=10;
-				break;
-				
-				case 83: 
-					y+=10;
-				break;
-				
-				case 68: 
-					x+=10;
-				break;
-				
+				if(flag) {
+					System.out.println("No se ha podido mover el personaje pues ha chocado.");
+					//Lo siguiente es una idea para detectar por que lado choco el jugador con el objeto y luego moverlo un par de pixeles a cierta direccion para salir del bloqueo
+					/*if(((p1.getX()	+ p1.getWidth()) >= (obstaculo1.getX()))){
+						p1.setX(p1.getX() - 5);
+					}*/
 				}
+				else {
+					switch(e.getKeyCode()) {
+					case 87: 
+						p1.setY(p1.getY() - 10);
+						
+					break;
+
+					case 65: 
+						p1.setX(p1.getX() - 10);
+					break;
+					
+					case 83: 
+						p1.setY(p1.getY() + 10);
+					break;
+					
+					case 68: 
+						p1.setX(p1.getX() + 10);
+					break;
+					
+					}
+				}
+
+				
+				
 				frame.repaint();
 			}
 
@@ -116,8 +133,11 @@ public class TableroDibujo{
 	class tableroGraphics extends JPanel{
 		protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.setColor(Color.RED);
-            g.fillRect(x, y, 50, 50);
+            g.setColor(Color.decode(p1.getColor()));
+            g.fillRect(p1.getX(),p1.getY(),p1.getWidth(), p1.getHeight());
+            
+            g.setColor(Color.decode(obstaculo1.getColor()));
+            g.fillRect(obstaculo1.getX(),obstaculo1.getY(),obstaculo1.getWidth(), obstaculo1.getHeight());
         }
 	}
 
