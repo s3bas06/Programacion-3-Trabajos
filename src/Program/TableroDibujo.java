@@ -18,7 +18,7 @@ public class TableroDibujo{
 
 
 	private JFrame frame;
-
+	public int x = 530,y=300;
 	/**
 	 * Launch the application.
 	 */
@@ -78,6 +78,26 @@ public class TableroDibujo{
 				
 				System.out.println(e.getKeyCode());
 				
+				switch(e.getKeyCode()) {
+				case 87: 
+					y -= 10;
+					
+				break;
+
+				case 65: 
+					x-=10;
+				break;
+				
+				case 83: 
+					y+=10;
+				break;
+				
+				case 68: 
+					x+=10;
+				break;
+				
+				}
+				frame.repaint();
 			}
 
 			@Override
@@ -97,7 +117,7 @@ public class TableroDibujo{
 		protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             g.setColor(Color.RED);
-            g.fillRect(50, 50, 100, 100);
+            g.fillRect(x, y, 50, 50);
         }
 	}
 
