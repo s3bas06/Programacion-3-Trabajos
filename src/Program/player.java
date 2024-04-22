@@ -55,19 +55,20 @@ public class player {
 		this.color = color;
 	}
 	
-	public boolean colision(player pared) {
-		
-		if(
-			((this.getX()	+ this.getWidth()) >= (pared.getX())) && 
-			((this.getX()) <= (pared.getX() + pared.getWidth())) &&
-			(this.getY() + this.getHeight() >= pared.getY()) &&
-			(this.getY() <= (pared.getY() + pared.getHeight()))
+	public boolean colision(player paredes[]) {
+		int tam = paredes.length;
+		for(int i =0; i<tam-1  ; i++) {
+			if(
+				((this.getX()	+ this.getWidth()) >= (paredes[i].getX())) && 
+				((this.getX()) <= (paredes[i].getX() + paredes[i].getWidth())) &&
+				(this.getY() + this.getHeight() >= paredes[i].getY()) &&
+				(this.getY() <= (paredes[i].getY() + paredes[i].getHeight()))
 				) {
-			return true;
+				return true;
+			}			
 		}
-		else {
-			return false;
-		}
+		
+		return false;
 		
 	}
 	
