@@ -1,0 +1,14 @@
+[
+  {
+    "name": "John Doe",
+    "city": "New York",
+    "job": "Developer",
+    "cars": ["Toyota", "Honda"]
+  },
+  {
+    "name": "Jane Smith",
+    "city": "San Francisco",
+    "job": "Designer",
+    "cars": ["Ford", "Chevrolet"]
+  }
+]
