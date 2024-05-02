@@ -1,14 +1,23 @@
 [
   {
-    "name": "John Doe",
-    "city": "New York",
-    "job": "Developer",
-    "cars": ["Toyota", "Honda"]
+    "user": "sebastian",
+    "password": "1234"
   },
   {
-    "name": "Jane Smith",
-    "city": "San Francisco",
-    "job": "Designer",
-    "cars": ["Ford", "Chevrolet"]
+    "user": "juliocesar22",
+    "password": "dinamarca22"
+  },
+  {
+    "user": "duki",
+    "password": "goku123"
+  },
+  {
+    "user": "notchmojang",
+    "password": "minecraft123"
+  },
+  {
+    "user": "sebastianoa06",
+    "password": "chivasCampeon123"
   }
+	
 ]

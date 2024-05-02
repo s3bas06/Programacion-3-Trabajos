@@ -193,8 +193,6 @@ public class TableroDibujo{
 			new player(1250, 690, 30, 40,"#FF0800")
 	};
 	
-	
-	
 	private JFrame frame;
 	
 	/**
